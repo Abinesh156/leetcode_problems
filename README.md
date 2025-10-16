@@ -17,6 +17,7 @@ This repository contains **Python solutions to various LeetCode problems**. I ma
 | 283        | Move Zeroes                                     | Easy       |
 | 389        | Find the Difference                              | Easy       |
 | 459        | Repeated Substring Pattern                       | Easy       |
+|  896       | Monotonic Array                                   | Easy       |
 
 ---
 
