@@ -1,5 +1,6 @@
-s="MCMXCIV"
-ans=[]
+s = "MCMXCIV"
+ans = []
+final = 0
 
 roman_dict = {
     "I": 1,
@@ -10,12 +11,15 @@ roman_dict = {
     "D": 500,
     "M": 1000
 }
+
 for i in s:
     ans.append(roman_dict[i])
 print(ans)
-for i in range(len(ans)-1):
-    if ans[i]<ans[i+1]:
-        final=final+(ans[i+1]-ans[i])
 
+for i in range(len(ans)):
+    if i < len(ans) - 1 and ans[i] < ans[i + 1]:
+        final -= ans[i]          # subtract small value
+    else:
+        final += ans[i]          # otherwise just add
 
 print(final)
