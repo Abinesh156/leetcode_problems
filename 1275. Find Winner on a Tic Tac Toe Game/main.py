@@ -5,35 +5,45 @@ row_a=[]
 col_a=[]
 row_b=[]
 col_b=[]
-cross=[0,1,2]
+
 def sepratemoves(moves):
-    for i in moves:
-        if moves.index(i)%2:
-            b.append(i)
+    for i in range(len(moves)):
+        if i % 2 == 0:
+            a.append(moves[i])
         else:
-            a.append(i)
+            b.append(moves[i])
+
 def rowcol(num,row,col):
     for j in range(len(num)):
         row.append(num[j][0])
-    for j in range(len(num)):
         col.append(num[j][1])
 
 sepratemoves(moves)
-print("movea",a)
-print("moveb",b)
 rowcol(a,row_a,col_a)
 rowcol(b,row_b,col_b)
-print("a",row_a,col_a)
-print("b",row_b,col_b)
-if len(moves)==9:
-    print("draw")
-elif row_a==col_a==len(row_a)==3 or sum(row_a)==sum(col_a)==3==len(row_a):
-    print("A",col_a[len(col_a)-1],col_a[0])
-elif row_b==col_b==cross==len(row_b)==3 or sum(row_b)==sum(col_b)==3==len(row_b):
+
+def check_winner(rows, cols):
+    for i in range(3):
+        if rows.count(i) == 3:  # row win
+            return True
+        if cols.count(i) == 3:  # column win
+            return True
+    # diagonal checks
+    if [ [rows[i], cols[i]] for i in range(len(rows)) ].count([0,0]) + \
+       [ [rows[i], cols[i]] for i in range(len(rows)) ].count([1,1]) + \
+       [ [rows[i], cols[i]] for i in range(len(rows)) ].count([2,2]) == 3:
+        return True
+    if [ [rows[i], cols[i]] for i in range(len(rows)) ].count([0,2]) + \
+       [ [rows[i], cols[i]] for i in range(len(rows)) ].count([1,1]) + \
+       [ [rows[i], cols[i]] for i in range(len(rows)) ].count([2,0]) == 3:
+        return True
+    return False
+
+if check_winner(row_a, col_a):
+    print("A")
+elif check_winner(row_b, col_b):
     print("B")
+elif len(moves) == 9:
+    print("Draw")
 else:
-    print("pending")
-
-
-
-
+    print("Pending")
