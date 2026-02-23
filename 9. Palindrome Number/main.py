@@ -5,3 +5,4 @@ if "".join(reversed(str(x)))==str(x):
 else:
     print(False)
 print("".join(reversed(str(x))))
+
